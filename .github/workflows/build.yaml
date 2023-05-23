@@ -1,3 +1,5 @@
+#Ref: https://stackoverflow.com/questions/64969644/copy-files-from-gcs-into-a-cloud-run-docker-container-during-build
+
 name: Docker GitHub
 
 on: #[push, pull_request,workflow_dispatch]
@@ -34,13 +36,14 @@ jobs:
       # Download the file locally
       - name: Get_file
         run: |-
-          gsutil cp gs://ccdb34c111111b80-source-bucket/data.txt gs://ccdb34c111111b80-destination-bucket/
+          gsutil cp gs://ccdb34c111111b80-source-bucket/data.txt . 
+        #gs://ccdb34c111111b80-destination-bucket/
 
 
       # Build docker image
       - name: Image_build
         run: |-
-          docker build -t europe-west3-docker.pkg.dev/dbiplake-gft-poc/docker-repo/image
+          docker build -t europe-west3-docker.pkg.dev/dbiplake-gft-poc/docker-repo/image .
          #gcr.io/$PROJECT_ID/$SERVICE_NAME .
 
       # Configure docker to use the gcloud command-line tool as a credential helper
@@ -50,5 +53,5 @@ jobs:
       # Push image to Google Container Registry
       - name: Image_push
         run: |-
-          docker push europe-west3-docker.pkg.dev/dbiplake-gft-poc/docker-repo/image:1.0.0 
+          docker push europe-west3-docker.pkg.dev/dbiplake-gft-poc/docker-repo/image 
         #gcr.io/$PROJECT_ID/$SERVICE_NAME
