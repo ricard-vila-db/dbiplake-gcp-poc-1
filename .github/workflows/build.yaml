@@ -43,7 +43,7 @@ jobs:
       # Build docker image
       - name: Image_build
         run: |-
-          docker build --build-arg GCP_CREDENTIALS="${{ secrets.GCP_CREDENTIALS }}" -t europe-west3-docker.pkg.dev/dbiplake-gft-poc/docker-repo/image .
+          docker build --build-arg GCP_CREDENTIALS='${{ secrets.GCP_CREDENTIALS }}' -t europe-west3-docker.pkg.dev/dbiplake-gft-poc/docker-repo/image .
          #gcr.io/$PROJECT_ID/$SERVICE_NAME .
 
       # Configure docker to use the gcloud command-line tool as a credential helper
