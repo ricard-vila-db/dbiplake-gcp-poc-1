@@ -34,10 +34,10 @@ jobs:
           export_default_credentials: true
       
       # Download the file locally
-      - name: Get_file
-        run: |-
-          gsutil cp gs://ccdb34c111111b80-source-bucket/data.txt . 
-        #gs://ccdb34c111111b80-destination-bucket/
+      #- name: Get_file
+      #  run: |-
+      #    gsutil cp gs://ccdb34c111111b80-source-bucket/data.txt . 
+      #  #gs://ccdb34c111111b80-destination-bucket/
 
 
       # Build docker image
