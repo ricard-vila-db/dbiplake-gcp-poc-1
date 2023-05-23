@@ -16,15 +16,15 @@ jobs:
       PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
     steps:
-      - id: 'Checkout'
+      - name: Checkout
         uses: actions/checkout@v2
       # GCP Authorization by Service Account Key JSON  
-      - id: 'auth'
+      - name: auth
         uses: 'google-github-actions/auth@v1'
         with:
          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
       # Setup gcloud CLI
-      - id: 'Setup gcloud CLI'
+      - name: Setup gcloud CLI
         uses: google-github-actions/setup-gcloud@v1
         with:
           service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
