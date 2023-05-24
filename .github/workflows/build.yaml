@@ -18,20 +18,20 @@ jobs:
       PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      #- name: Checkout
+      #  uses: actions/checkout@v2
       # GCP Authorization by Service Account Key JSON  
-      - name: auth
-        uses: 'google-github-actions/auth@v1'
-        with:
-         credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+      #- name: auth
+      #  uses: 'google-github-actions/auth@v1'
+      #  with:
+      #   credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
       # Setup gcloud CLI
-      - name: Setup gcloud CLI
-        uses: google-github-actions/setup-gcloud@v1
-        with:
-          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-          project_id: ${{ secrets.PROJECT_ID }}
-          export_default_credentials: true
+      #- name: Setup gcloud CLI
+      #  uses: google-github-actions/setup-gcloud@v1
+      #  with:
+      #    service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+      #    project_id: ${{ secrets.PROJECT_ID }}
+      #    export_default_credentials: true
       
       # Download the file locally
       #- name: Get_file
