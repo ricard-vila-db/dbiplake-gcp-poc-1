@@ -3,6 +3,8 @@ WORKDIR /app
 #ARG GCP_CREDENTIALS
 ARG SA_ACCOUNT
 RUN export GOOGLE_APPLICATION_CREDENTIALS="../dbiplake-gft-poc-387706-2d52428afe3c.json"
+RUN pwd
+RUN ls
 RUN echo $GOOGLE_APPLICATION_CREDENTIALS
 RUN gcloud auth activate-service-account $SA_ACCOUNT --key-file=$GOOGLE_APPLICATION_CREDENTIALS
 RUN gsutil cp gs://015ba1db99263839-source-bucket/data.txt gs://015ba1db99263839-destination-bucket/
