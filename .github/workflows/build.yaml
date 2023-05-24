@@ -18,8 +18,8 @@ jobs:
       PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
     steps:
-      #- name: Checkout
-      #  uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       # GCP Authorization by Service Account Key JSON  
       #- name: auth
       #  uses: 'google-github-actions/auth@v1'
