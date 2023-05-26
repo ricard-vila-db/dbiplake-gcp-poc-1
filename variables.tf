@@ -1,7 +1,7 @@
 variable "project" {
   description = "(Required) The GCP project where run terraform"
   type        = string
-  default     = "dbiplake-gft-poc"
+  default     = "dbiplake-gft-poc-387706"
 }
 variable "region" {
   description = "(Required) The GCP region where run terraform"
