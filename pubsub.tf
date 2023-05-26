@@ -1,14 +1,14 @@
 # Create a Pub/Sub Topic
 resource "google_pubsub_topic" "topic" {
-  name     = "cloud_run_topic"
+  name = "cloud_run_topic"
   #provider = google-beta
-  project  = var.project
+  project = var.project
 }
 resource "google_pubsub_topic_iam_binding" "binding" {
   #provider = google-beta
-  topic    = google_pubsub_topic.topic.id
-  role     = "roles/pubsub.publisher"
-  members  = ["serviceAccount:${data.google_storage_project_service_account.gcs_account.email_address}"]
+  topic   = google_pubsub_topic.topic.id
+  role    = "roles/pubsub.publisher"
+  members = ["serviceAccount:${data.google_storage_project_service_account.gcs_account.email_address}"]
 }
 
 # Create a Pub/Sub notification.
@@ -56,10 +56,10 @@ resource "google_service_account" "pubsub_subscription" {
 }
 #Give the invoker service account permission to invoke your default cloudrun service
 resource "google_cloud_run_service_iam_binding" "binding" {
-  location = google_cloud_run_service.default.location
-  service  = google_cloud_run_service.default.name
-  role     = "roles/run.invoker"
-  members  = ["serviceAccount:${google_service_account.pubsub_subscription.email}"]
+  location   = google_cloud_run_service.default.location
+  service    = google_cloud_run_service.default.name
+  role       = "roles/run.invoker"
+  members    = ["serviceAccount:${google_service_account.pubsub_subscription.email}"]
   depends_on = [google_service_account.pubsub_subscription]
 }
 #Allow Pub/Sub to create authentication tokens in your project
